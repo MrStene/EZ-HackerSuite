@@ -1,0 +1,6 @@
+scapy
+pyfiglet
+urllib3
+bs4
+requests_html
+requests

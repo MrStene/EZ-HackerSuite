@@ -188,8 +188,8 @@ class Cracker(tk.Frame):
         canvas_frame.config(width=450 + v_bar.winfo_width(), height=300)
         result_frame.bind("<Configure>", lambda e: result_canvas.configure(scrollregion=result_canvas.bbox("all")))
 
-
-    def run_cracker_gui(self, output: tk.StringVar, hashes: str,
+    @staticmethod
+    def run_cracker_gui(output: tk.StringVar, hashes: str,
                         wordlist: str, hash_algorithm_name: str, file_location: str):
         """To redirect the output of crack() to StringVar
 
@@ -244,7 +244,7 @@ class Scanner(tk.Frame):
         subdomain_entry = tk.Entry(self)
         subdomain_entry.grid(row=3, column=0)
 
-        #Example Label
+        # Example Label
         example_label = tk.Label(self, text="Example: 192.168.1.0/24")
         example_label.grid(row=4, column=0)
 
@@ -331,8 +331,8 @@ class Scanner(tk.Frame):
         port_result_frame.bind("<Configure>",
                                lambda e: port_result_canvas.configure(scrollregion=port_result_canvas.bbox("all")))
 
-
-    def run_arp_gui(self, output, ip_add: str):
+    @staticmethod
+    def run_arp_gui(output, ip_add: str):
         """To redirect the output of scapy.arping() to StringVar
 
         This function takes the output of scapy.arping() and redirects it to a StringVar,
@@ -344,7 +344,8 @@ class Scanner(tk.Frame):
         with redirect_stdout(redirector):
             scanner.run_arp(ip_add)
 
-    def run_port_scan_gui(self, output: tk.StringVar, target_host: str, start_port: int, end_port: int, threads: int):
+    @staticmethod
+    def run_port_scan_gui(output: tk.StringVar, target_host: str, start_port: int, end_port: int, threads: int):
         """To redirect the output of run_port_scan() to StringVar
 
         This function takes the output of run_port_scan() and redirects it to a StringVar,
@@ -376,7 +377,7 @@ class DirBuster(tk.Frame):
         title_label.grid(row=1, column=0, columnspan=4)
 
         # Target Label and Entry
-        target_label = tk.Label(self, text="Target:")
+        target_label = tk.Label(self, text="* Target:")
         target_label.grid(row=2, column=0, sticky="E")
         target_entry = tk.Entry(self, width=30)
         target_entry.grid(row=2, column=1, sticky="W")
@@ -395,7 +396,7 @@ class DirBuster(tk.Frame):
         result_file_button.grid(row=3, column=2, sticky="E")
 
         # Amount of Threads Label and Entry
-        threads_label = tk.Label(self, text="Threads:")
+        threads_label = tk.Label(self, text="* Threads:")
         threads_label.grid(row=2, column=2, sticky="E")
         threads_entry = tk.Entry(self, width=30)
         threads_entry.grid(row=2, column=3, sticky="W")
@@ -429,7 +430,8 @@ class DirBuster(tk.Frame):
         canvas_frame.config(width=400 + v_bar.winfo_width(), height=350)
         result_frame.bind("<Configure>", lambda e: result_canvas.configure(scrollregion=result_canvas.bbox("all")))
 
-    def bust_gui(self, output: tk.StringVar, wordlist: str, threads: int, target_ip: str, save_to_file: str):
+    @staticmethod
+    def bust_gui(output: tk.StringVar, wordlist: str, threads: int, target_ip: str, save_to_file: str):
         """To redirect the output of run_brute_force_directories() to StringVar
 
         This function takes the output of run_brute_force_directories() and redirects it to a StringVar,
@@ -542,7 +544,8 @@ class LoginCracker(tk.Frame):
         canvas_frame.config(width=400 + v_bar.winfo_width(), height=350)
         result_frame.bind("<Configure>", lambda e: result_canvas.configure(scrollregion=result_canvas.bbox("all")))
 
-    def show_form_gui(self, output: tk.StringVar, url: str):
+    @staticmethod
+    def show_form_gui(output: tk.StringVar, url: str):
         """To redirect the output of print_forms() to StringVar
 
         This function takes the output of print_forms() and redirects it to a StringVar,
@@ -555,7 +558,8 @@ class LoginCracker(tk.Frame):
             if form is not None:
                 logincracker.print_form(form)
 
-    def run_login_cracker_gui(self, output: tk.StringVar, url: str, u_index: int,
+    @staticmethod
+    def run_login_cracker_gui(output: tk.StringVar, url: str, u_index: int,
                               p_index: int, users_file: str, password_file: str):
         """To redirect the output of run_login_cracker() to StringVar
 

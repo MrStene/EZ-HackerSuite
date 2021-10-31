@@ -53,7 +53,7 @@ def brute_force_directories(words_queue: queue, target: str, result_queue: queue
 
                 # If a response other than 404 is received, print status and url
                 if len(response.data) and response.status != 404:
-                    success_string = "[{}] --> {}".format(response.status, url)
+                    success_string = "[{}] => {}".format(response.status, url)
                     print(success_string)
                     result_queue.put(success_string)
 
@@ -61,7 +61,7 @@ def brute_force_directories(words_queue: queue, target: str, result_queue: queue
             # MaxRetryError may occur when trying to reach a subdomain that doesn't exist.
             except(u_error.URLError, u_error.HTTPError, urllib3.exceptions.MaxRetryError):
                 if hasattr(u_error.HTTPError, "code") and u_error.HTTPError.code != 404:
-                    success_string = "Exception! [{}] --> {}".format(u_error.HTTPError.code, url)
+                    success_string = "Exception! [{}] => {}".format(u_error.HTTPError.code, url)
                     print(success_string)
                     result_queue.put(success_string)
                 pass

@@ -126,7 +126,7 @@ def run_login_cracker(url: str, u_index: int, p_index: int, users_file: str, pas
         with open(users_file, "r") as users, open(password_file, "r") as passwords:
             for user in users:
                 username = user.strip()
-                passwords.seek(0,0)
+                passwords.seek(0, 0)
                 for passwd in passwords:
                     password = passwd.strip()
                     response = login_form.submit_form(url, u_index - 1, p_index - 1, username, password)
@@ -140,6 +140,3 @@ def run_login_cracker(url: str, u_index: int, p_index: int, users_file: str, pas
         print("Finished after: {}".format(time.time() - start_time))
     else:
         print("No login form found")
-
-
-

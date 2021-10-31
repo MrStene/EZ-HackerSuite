@@ -4,6 +4,7 @@ import cracker
 import scanner
 import dirbuster
 import logincracker
+import cracker2
 
 
 def _clear_screen():
@@ -23,6 +24,23 @@ def run_cracker_cli():
     choose_hash_type = input("md5, sha1, sha256, sha512: ")
     choose_file_location = input("Where do you want to store the result? (Optional): ")
     cracker.crack(choose_hashes, choose_wordlist, choose_hash_type, choose_file_location)
+
+
+# Work in Progress
+def run_cracker_cli_2():
+    """Runs cracker in terminal
+
+    This function is called to run crack() from cracker.py.
+    input() is used to provide the crack() function with the necessary arguments.
+    """
+    cracker_banner = pyfiglet.figlet_format("EZ   PASSWORD   CRACKER")
+    print(cracker_banner)
+    choose_hashes = input("Where are the hashes you want to crack located?: ")
+    choose_wordlist = input("Where is the wordlist you want to use located: ")
+    choose_hash_type = input("md5, sha1, sha256, sha512: ")
+    choose_threads = int(input("How many threads do you wish to use?"))
+    choose_file_location = input("Where do you want to store the result? (Optional): ")
+    cracker2.run_crack(choose_hashes, choose_wordlist, choose_hash_type, choose_file_location, choose_threads)
 
 
 def run_scanner_cli():
@@ -100,14 +118,16 @@ def run_login_cracker_cli():
 # Welcome Page and Service Selector
 welcome_banner = pyfiglet.figlet_format("W e l c o m e   t o \nE Z   H a c k e r   \nS u i t e !")
 print(welcome_banner)
-print("What would you like to do? \n \n "
-      "1: Crack a password \n 2: Network Scanning \n 3: Directory Busting \n 4: Login Cracker \n\n")
+select_print = "What would you like to do? \n \n 1: Crack a password \n 2: Network Scanning \n " \
+               "3: Directory Busting \n 4: Login Cracker \n 5: Cracker2 (WIP) \n\n"
+print(select_print)
 
 services = {
     "1": run_cracker_cli,
     "2": run_scanner_cli,
     "3": bust_cli,
-    "4": run_login_cracker_cli
+    "4": run_login_cracker_cli,
+    "5": run_cracker_cli_2
 }
 
 # Runs the function corresponding to a number. If valid number is entered
@@ -126,3 +146,4 @@ while keep_running:
             keep_running = False
     else:
         print("Illegal value " + service_index + ", try again")
+    print(select_print)

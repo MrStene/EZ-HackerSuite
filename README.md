@@ -1,5 +1,11 @@
 # EZ-HackerSuite
-Basic tools for hacking.
+Basic tools for hacking. This was a school project and has a lot of flaws. The software may improve if I find the time for it.
+
+This software contains:
+ - Password Cracker
+ - Network Scanner
+ - Directory Buster
+ - Login Cracker
 
 ## Getting Started
 
